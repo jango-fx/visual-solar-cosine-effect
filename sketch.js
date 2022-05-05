@@ -48,8 +48,19 @@ function draw() {
     stroke(47, 100, 100, 5);
     line(height * -0.5 * 0.0, 0, height * -0.5 * 0.25, 0);
 
-    strokeWeight(map(p, 0.0, 1.0, 0.5, 5.0));
-    stroke(30, 100, 100, 3.5);
+    pop();
+  }
+  pop();
+  
+  push(); //--------------------------------- draw polar graph
+  for (let i = 0; i < 180; i+=2) {
+    push();
+    rotate(radians(i));
+    let p = Math.cos(radians(i - 90));
+    let hue = map(p, 0.0, 1.0, 50, 20);
+
+    strokeWeight(2);//map(p, 0.0, 1.0, 0.5, 5.0));
+    stroke(30, 100, 100, 20);
     let max = map(p, 0.0, 1.0, 0, height * -0.5);
     line(0, 0, max, 0);
     pop();
